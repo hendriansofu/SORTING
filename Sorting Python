@@ -1,0 +1,214 @@
+import time
+
+data = []
+banyak = 0
+
+def bubble():
+    global data, banyak
+    print("Bubble sort")
+    print("=============")
+    print("1. Ascending")
+    print("2. Descending")
+    pilihan = int(input("Pilih = "))
+    
+    if pilihan == 1:
+        start_time = time.time()
+        print("Sebelum di sortir =", data)
+        
+        for j in range(banyak - 1):
+            for i in range(banyak - 1):
+                if data[i] > data[i + 1]:
+                    data[i], data[i + 1] = data[i + 1], data[i]
+                    print(data)
+        
+        print("Setelah di sortir =", data)
+        end_time = time.time()
+        print(f"Lama proses = {(end_time - start_time) * 1000:.2f} ms")
+
+    elif pilihan == 2:
+        start_time = time.time()
+        print("Sebelum di sortir =", data)
+        
+        for j in range(banyak - 1):
+            for i in range(banyak - 1):
+                if data[i] < data[i + 1]:
+                    data[i], data[i + 1] = data[i + 1], data[i]
+                    print(data)
+        
+        print("Setelah di sortir =", data)
+        end_time = time.time()
+        print(f"Lama proses = {(end_time - start_time) * 1000:.2f} ms")
+
+    else:
+        print("Pilihan tidak valid")
+
+def tukar(a, b):
+    global data
+    data[a], data[b] = data[b], data[a]
+
+def exchange():
+    global data, banyak
+    print("Exchange sort")
+    print("=============")
+    print("1. Ascending")
+    print("2. Descending")
+    pilihan = int(input("Pilih = "))
+    
+    if pilihan == 1:
+        start_time = time.time()
+        print("Sebelum di sortir =", data)
+        
+        for i in range(banyak - 1):
+            for j in range(i + 1, banyak):
+                if data[i] > data[j]:
+                    tukar(i, j)
+                    print(data)
+        
+        print("Setelah di sortir =", data)
+        end_time = time.time()
+        print(f"Lama proses = {(end_time - start_time) * 1000:.2f} ms")
+
+    elif pilihan == 2:
+        start_time = time.time()
+        print("Sebelum di sortir =", data)
+        
+        for i in range(banyak - 1):
+            for j in range(i + 1, banyak):
+                if data[i] < data[j]:
+                    tukar(i, j)
+                    print(data)
+        
+        print("Setelah di sortir =", data)
+        end_time = time.time()
+        print(f"Lama proses = {(end_time - start_time) * 1000:.2f} ms")
+
+    else:
+        print("Pilihan tidak valid")
+
+def selection():
+    global data, banyak
+    print("Selection sort")
+    print("===============")
+    print("1. Ascending")
+    print("2. Descending")
+    pilihan = int(input("Pilih = "))
+    
+    if pilihan == 1:
+        start_time = time.time()
+        print("Sebelum di sortir =", data)
+        
+        for i in range(banyak - 1):
+            mini = i
+            for j in range(i + 1, banyak):
+                if data[j] < data[mini]:
+                    mini = j
+            if mini != i:
+                data[i], data[mini] = data[mini], data[i]
+            print(data)
+        
+        print("Setelah di sortir =", data)
+        end_time = time.time()
+        print(f"Lama proses = {(end_time - start_time) * 1000:.2f} ms")
+
+    elif pilihan == 2:
+        start_time = time.time()
+        print("Sebelum di sortir =", data)
+        
+        for i in range(banyak - 1):
+            mini = i
+            for j in range(i + 1, banyak):
+                if data[j] > data[mini]:
+                    mini = j
+            if mini != i:
+                data[i], data[mini] = data[mini], data[i]
+            print(data)
+        
+        print("Setelah di sortir =", data)
+        end_time = time.time()
+        print(f"Lama proses = {(end_time - start_time) * 1000:.2f} ms")
+
+    else:
+        print("Pilihan tidak valid")
+
+def insertion():
+    global data, banyak
+    print("Insertion sort")
+    print("===============")
+    print("1. Ascending")
+    print("2. Descending")
+    pilihan = int(input("Pilih = "))
+    
+    if pilihan == 1:
+        start_time = time.time()
+        print("Sebelum di sortir =", data)
+        
+        for j in range(1, banyak):
+            key = data[j]
+            i = j - 1
+            while i >= 0 and data[i] > key:
+                data[i + 1] = data[i]
+                i -= 1
+            data[i + 1] = key
+            print(data)
+        
+        print("Setelah di sortir =", data)
+        end_time = time.time()
+        print(f"Lama proses = {(end_time - start_time) * 1000:.2f} ms")
+
+    elif pilihan == 2:
+        start_time = time.time()
+        print("Sebelum di sortir =", data)
+        
+        for j in range(1, banyak):
+            key = data[j]
+            i = j - 1
+            while i >= 0 and data[i] < key:
+                data[i + 1] = data[i]
+                i -= 1
+            data[i + 1] = key
+            print(data)
+        
+        print("Setelah di sortir =", data)
+        end_time = time.time()
+        print(f"Lama proses = {(end_time - start_time) * 1000:.2f} ms")
+
+    else:
+        print("Pilihan tidak valid")
+
+def main():
+    global data, banyak
+    while True:
+        print("\nProgram Menu Sorting")
+        print("=======================")
+        print("1. Masukkan Data")
+        print("2. Bubble Sort")
+        print("3. Exchange Sort")
+        print("4. Selection Sort")
+        print("5. Insertion Sort")
+        print("6. Keluar")
+        pil = int(input("Masukan Pilihan Anda: "))
+        
+        if pil == 1:
+            banyak = int(input("Masukkan Banyak Data: "))
+            data = [int(input(f"Masukkan Data {i + 1}: ")) for i in range(banyak)]
+        
+        elif pil == 2:
+            bubble()
+        
+        elif pil == 3:
+            exchange()
+        
+        elif pil == 4:
+            selection()
+        
+        elif pil == 5:
+            insertion()
+        
+        elif pil == 6:
+            print("Terima Kasih!")
+            break
+        else:
+            print("Pilihan tidak valid")
+
+if __name__ == "__main__":
+    main()
